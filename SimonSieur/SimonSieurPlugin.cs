@@ -1,11 +1,9 @@
-using System;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Game.Command;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
-using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace SimonSieur;
@@ -85,13 +83,12 @@ public sealed class SimonSieurPlugin : IDalamudPlugin
         if (!Configuration.ForcedYes)
             return;
 
-        var atk = (AtkUnitBase*)addonInfo.Addon;
-        if (atk == null)
+        var addon = addonInfo.GetAddon<AtkUnitBase>();
+        if (addon == null)
             return;
 
-        var addon = (AddonSelectYesno*)atk;
         _pluginLog.Information("Forced yes active: auto-clicking Yes");
-        addon->YesButton->ClickAddonButton(atk);
+        addon->FireCallbackInt(0);
     }
 
     public void Dispose()
