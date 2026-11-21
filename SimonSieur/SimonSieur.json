@@ -1,0 +1,12 @@
+{
+  "Name": "Simon Sieur",
+  "Author": "Shiori Zephyr",
+  "Punchline": "Hold a hotkey to automatically click Yes on any YesNo dialog",
+  "Description": "Minimal forced-yes plugin. Bind a hotkey, hold it down, and every SelectYesno dialog that appears will be confirmed automatically.",
+  "RepoUrl": "https://github.com/Shiori-Zephyr/simonsieur",
+  "Tags": [
+    "automation",
+    "yes",
+    "confirm"
+  ]
+}
