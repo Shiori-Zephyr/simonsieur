@@ -83,10 +83,11 @@ public sealed class SimonSieurPlugin : IDalamudPlugin
         if (!Configuration.ForcedYes)
             return;
 
-        var addon = addonInfo.GetAddon<AtkUnitBase>();
-        if (addon == null)
+        var addonPtr = addonInfo.Addon;
+        if (addonPtr.IsNull)
             return;
 
+        var addon = (AtkUnitBase*)addonPtr.Address;
         _pluginLog.Information("Forced yes active: auto-clicking Yes");
         addon->FireCallbackInt(0);
     }
